@@ -1,0 +1,10 @@
+cron:
+- description: price fetching peak
+  url: /fetchprice
+  schedule: every 5 minutes from 6:00 to 10:00
+  timezone: Israel
+
+- description: price fetching low
+  url: /fetchprice
+  schedule: every 20 minutes from 10:00 to 6:00
+  timezone: Israel
