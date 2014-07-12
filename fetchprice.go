@@ -1,4 +1,4 @@
-package goplus
+package fastlanestat
 
 import (
         "net/http"
@@ -19,16 +19,7 @@ type PricePoint struct {
     Value  float32
 }
 
-// gopherFallback is the official gopher URL (in case we don't find any in the Google+ stream)
-const gopherFallback = "http://golang.org/doc/gopher/gophercolor.png"
-
-// init is called before the application start
-func init() {
-        // Register a handler for /gopher URLs.
-		http.HandleFunc("/fetchprice", fetchprice)
-}
-
-func fetchprice(w http.ResponseWriter, r *http.Request) {
+func fetchpriceHandler(w http.ResponseWriter, r *http.Request) {
     c := appengine.NewContext(r)
     client := urlfetch.Client(c)
     resp, err := client.Get("https://www.fastlane.co.il/Mobile.aspx")
