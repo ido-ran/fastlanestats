@@ -19,14 +19,13 @@ func viewStatsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// The Query type and its methods are used to construct a query.
 	q := datastore.NewQuery("PricePoint").
-//	        Filter("PointInTime >=", "2014-07-12 11:42:37").
-//	        Filter("PointInTime <=", "2014-07-13 11:42:37").
-	        Order("PointInTime")
+	              Order("-PointInTime").
+                Limit(5000)
 
 	// To retrieve the results,
 	// you must execute the Query using its GetAll or Run methods.
 	var pricePoints []PricePoint
-	//_, err := 
+	//_, err :=
 	q.GetAll(c, &pricePoints)
 	// handle error
 	// ...
